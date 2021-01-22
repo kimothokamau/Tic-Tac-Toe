@@ -14,6 +14,7 @@ def next_turn(selected)
 
   puts 'Invalid Input. Select a number between 1 and 9.' unless selected > 1 && selected < 10
   puts 'That slot is not available. Select an available slot.' unless available_slots.include? selected
+  puts 'That is not a valid input. Select a number between 1 and 9.' unless selected.is_a? Integer
 end
 
 puts initialize_board
@@ -53,11 +54,14 @@ while turn <= 9
   end
 end
 
+win = false
+
 # If there are three "X"s are in line, then this line will be displayed
-puts 'Congratulations Player X! You are the winner!'
+#puts 'Congratulations Player X! You are the winner!'
 
 # If there are three "O"s are in line, then this line will be displayed
-puts 'Congratulations Player O! You are the winner!'
+#puts 'Congratulations Player O! You are the winner!'
 
-# If there are no three "X"s nor "O"s in line, then this line will be displayed
-puts "It's a draw. Better luck next time guys."
+unless win
+  puts "It's a draw. Better luck next time guys."
+end
