@@ -8,6 +8,8 @@ AllCops:
 GlobalVars:
   AllowedVariables:
     - $turn
+    - $available_slots
+    - $winner
 
 Layout/LineLength:
   Max: 120
