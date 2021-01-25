@@ -12,7 +12,32 @@ end
 
 $available_slots = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-def next_turn(selected)
+def win_combos(_slot, player)
+  posible_wins = [
+    [1, 2, 3],
+    [1, 5, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [3, 5, 7],
+    [4, 5, 6],
+    [7, 8, 9]
+  ]
+
+  posible_wins.each do |_arr|
+    $win = true
+    $winner = player
+    puts "Congratulations #{$winner}! You are the winnner!"
+  end
+end
+
+# if posible_wins.include?(slot)
+#   $win = true
+#  $winner = player
+#  puts "Congratulations #{$winner}! You are the winnner!"
+# end
+
+def next_turn(selected, x_or_o)
   if selected < 1 || selected > 9
     puts 'Invalid Input. Select a number between 1 and 9.'
     $turn -= 1
@@ -21,32 +46,14 @@ def next_turn(selected)
     $turn -= 1
   else
     $available_slots.delete(selected)
+    @board[selected - 1] = x_or_o
   end
 end
 
-# def win_combos(slot)
-# posible_wins = [
-# [1, 2, 3],
-# [1, 5, 9],
-# [1, 4, 7],
-# [2, 5, 8],
-# [3, 6, 9],
-# [3, 5, 7],
-# [4, 5, 6],
-# [7, 8, 9]
-# ]
-
-# if slot.compare(posible_wins)
-# win = true
-# $winner = slot
-# end
-# end
-
-win = false
 $turn = 1
+$win = false
 
 player_x = []
-
 player_o = []
 
 puts 'Welcome! You are Player X. Press any key to move on to the next player.'
@@ -57,36 +64,37 @@ gets.chomp
 
 game_playing = true
 
-puts initialize_board
 while game_playing
   if $turn.odd?
+    initialize_board
     puts "It's your turn again Player X."
     puts 'Select the slot to place your X.'
     slot_selected = gets.chomp.to_i
     player_x.push(slot_selected)
     # A "X" is placed on the board based on the number selected
     $turn += 1
-    next_turn(slot_selected)
-    # win_combos(player_x)
-    puts initialize_board
+    next_turn(slot_selected, 'x')
+    win_combos(player_x, 'Player X')
 
   elsif $turn.even?
+    initialize_board
     puts "It's your turn again Player O."
     puts 'Select the slot to place your O.'
     slot_selected = gets.chomp.to_i
     player_o.push(slot_selected)
     # An "O" is placed on the board based on the number selected
     $turn += 1
-    next_turn(slot_selected)
-    # win_combos(player_o)
-    puts initialize_board
+    next_turn(slot_selected, 'o')
+    win_combos(player_o, 'Player O')
   end
-  game_playing = false if $turn > 9 || win == true
+  game_playing = false if $turn > 9 || $win == true
+
+  # if win == true
+  # puts "Congratulations #{$winner}! You are the winnner!"
+  # end
 end
 
-case win
-when false
-  puts "It's a draw. Better luck next time guys."
-when true
-  puts "Congratulations #{$winner}! You are the winnner!"
-end
+# case win
+# when false
+# puts "It's a draw. Better luck next time guys."
+# end
