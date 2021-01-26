@@ -3,16 +3,15 @@
 require_relative './../lib/validation'
 require_relative './../lib/win_combinations'
 
-
-@board = %w[1 2 3 4 5 6 7 8 9]
+$board = %w[1 2 3 4 5 6 7 8 9]
 
 def initialize_board
   puts 'Enter an available number from 1-9 to select the corresponding slot on the game board.'
-  puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+  puts " #{$board[0]} | #{$board[1]} | #{$board[2]} "
   puts ' ---------- '
-  puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+  puts " #{$board[3]} | #{$board[4]} | #{$board[5]} "
   puts ' ---------- '
-  puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+  puts " #{$board[6]} | #{$board[7]} | #{$board[8]} "
 end
 
 $turn = 1
@@ -39,10 +38,9 @@ while game_playing
     initialize_board
     slot_selected = gets.chomp.to_i
     player_x.push(slot_selected)
-    # A "X" is placed on the board based on the number selected
     $turn += 1
     val = Validation.new
-    val.next_turn(slot_selected, "X")
+    val.next_turn(slot_selected, 'X')
     win = WinCombinations.new
     win.win_combos(player_x, 'Player X')
 
@@ -52,10 +50,9 @@ while game_playing
     initialize_board
     slot_selected = gets.chomp.to_i
     player_o.push(slot_selected)
-    # An "O" is placed on the board based on the number selected
     $turn += 1
     val = Validation.new
-    val.next_turn(slot_selected, "O")
+    val.next_turn(slot_selected, 'O')
     win = WinCombinations.new
     win.win_combos(player_o, 'Player O')
   end

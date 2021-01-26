@@ -10,7 +10,7 @@ class Validation
       $turn -= 1
     else
       $available_slots.delete(selected)
-      @board[selected - 1] = x_or_o
+      $board[selected - 1] = x_or_o
     end
   end
 end

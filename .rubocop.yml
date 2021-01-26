@@ -11,6 +11,7 @@ GlobalVars:
     - $available_slots
     - $winner
     - $win
+    - $board
 
 Layout/LineLength:
   Max: 120
