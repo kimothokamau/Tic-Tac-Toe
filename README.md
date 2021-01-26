@@ -12,11 +12,11 @@ To run this code you can visit the [live preview](https://repl.it/@alexisbec/Tic
 
 The start of the game: 
 
-![screenshot](./screenshot_1)
+![screenshot](./screenshot_1.png)
 
 The winner:
 
-![screenshot](./screenshot_2)
+![screenshot](./screenshot_2.png)
 
 ## Built With
 
@@ -51,4 +51,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT]() licensed.
+This project is [MIT](https://github.com/Tasheka/Tic-Tac-Toe/blob/readme_game_instructions/LICENSE) licensed.
