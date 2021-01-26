@@ -1,4 +1,5 @@
 # !/usr/bin/env ruby
+# rubocop:disable Style/GuardClause
 
 def initialize_board
   puts 'Enter an available number from 1-9 to select the corresponding slot on the game board.'
@@ -12,30 +13,22 @@ end
 
 $available_slots = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-def win_combos(_slot, player)
-  posible_wins = [
-    [1, 2, 3],
-    [1, 5, 9],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-    [3, 5, 7],
-    [4, 5, 6],
-    [7, 8, 9]
-  ]
+def win_combos(slot, player)
+  possible_wins = [[1, 2, 3], [1, 5, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [3, 5, 7], [4, 5, 6], [7, 8, 9]]
+  if slot.length >= 3
+    check_array = []
+    possible_wins.each do |arr|
+      arr.each do |space|
+        check_array.push(space) if slot.include?(space)
+        next unless possible_wins.include?(check_array)
 
-  posible_wins.each do |_arr|
-    $win = true
-    $winner = player
-    puts "Congratulations #{$winner}! You are the winnner!"
+        $win = true
+        $winner = player
+        puts "Congratulations #{$winner}! You are the winnner!"
+      end
+    end
   end
 end
-
-# if posible_wins.include?(slot)
-#   $win = true
-#  $winner = player
-#  puts "Congratulations #{$winner}! You are the winnner!"
-# end
 
 def next_turn(selected, x_or_o)
   if selected < 1 || selected > 9
@@ -94,7 +87,6 @@ while game_playing
   # end
 end
 
-# case win
-# when false
-# puts "It's a draw. Better luck next time guys."
-# end
+puts "It's a draw. Better luck next time guys." if $win == false
+
+# rubocop:enable Style/GuardClause
