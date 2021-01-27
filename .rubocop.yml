@@ -3,7 +3,15 @@ AllCops:
         - "Guardfile"
         - "Rakefile"
 
-    DisplayCopNames: true
+  DisplayCopNames: true
+
+GlobalVars:
+  AllowedVariables:
+    - $turn
+    - $available_slots
+    - $winner
+    - $win
+    - $board
 
 Layout/LineLength:
     Max: 120

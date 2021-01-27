@@ -1,27 +1,25 @@
 # !/usr/bin/env ruby
+
+require_relative './../lib/validation'
+require_relative './../lib/win_combinations'
+
+$board = %w[1 2 3 4 5 6 7 8 9]
+
 def initialize_board
   puts 'Enter an available number from 1-9 to select the corresponding slot on the game board.'
-  @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  puts " #{@board[0] = 1} | #{@board[1] = 2} | #{@board[2] = 3} "
+  puts " #{$board[0]} | #{$board[1]} | #{$board[2]} "
   puts ' ---------- '
-  puts " #{@board[3] = 4} | #{@board[4] = 5} | #{@board[5] = 6} "
+  puts " #{$board[3]} | #{$board[4]} | #{$board[5]} "
   puts ' ---------- '
-  puts " #{@board[6] = 7} | #{@board[7] = 8} | #{@board[8] = 9} "
+  puts " #{$board[6]} | #{$board[7]} | #{$board[8]} "
 end
 
-def next_turn(selected)
-  available_slots = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  if selected < 1 || selected > 9
-    puts 'Invalid Input. Select a number between 1 and 9.'
-    $turn -= 1
-  elsif (!available_slots.include? selected) && (selected < 1 || selected > 9)
-    puts 'That slot is not available. Select an available slot.'
-    $turn -= 1
-  end
-end
-
-win = false
 $turn = 1
+
+$win = false
+
+player_x = []
+player_o = []
 
 puts 'Welcome! You are Player X. Press any key to move on to the next player.'
 gets.chomp
@@ -31,31 +29,36 @@ gets.chomp
 
 game_playing = true
 
-puts initialize_board
 while game_playing
   if $turn.odd?
     puts "It's your turn again Player X."
     puts 'Select the slot to place your X.'
+    initialize_board
     slot_selected = gets.chomp.to_i
-    # A "X" is placed on the board based on the number selected
+    player_x.push(slot_selected)
     $turn += 1
-    next_turn(slot_selected)
-    puts initialize_board
+    val = Validation.new
+    val.next_turn(slot_selected, 'X')
+    win = WinCombinations.new
+    win.win_combos(player_x, 'Player X')
+
   elsif $turn.even?
     puts "It's your turn again Player O."
     puts 'Select the slot to place your O.'
+    initialize_board
     slot_selected = gets.chomp.to_i
-    # An "O" is placed on the board based on the number selected
+    player_o.push(slot_selected)
     $turn += 1
-    next_turn(slot_selected)
-    puts initialize_board
+    val = Validation.new
+    val.next_turn(slot_selected, 'O')
+    win = WinCombinations.new
+    win.win_combos(player_o, 'Player O')
   end
-  game_playing = false if $turn > 9 || win == true
-end
-
-case win
-when false
-  puts "It's a draw. Better luck next time guys."
-when true
-  puts "Congratulations #{winnner}! You are the winnner!"
+  if $win == true
+    game_playing = false
+    puts "Congratulations #{$winner}! You are the winner!"
+  elsif $turn > 9 && $win == false
+    game_playing = false
+    puts "It's a draw. Better luck next time guys."
+  end
 end
