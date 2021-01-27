@@ -27,8 +27,6 @@ gets.chomp
 puts 'Welcome! You are Player O. Press any key to begin the game.'
 gets.chomp
 
-initialize_board
-
 game_playing = true
 
 while game_playing
