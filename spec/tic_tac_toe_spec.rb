@@ -12,6 +12,11 @@ describe Validation do
       validation = Validation.new
       expect(p(validation.next_turn(12, 'x'))).to eql('Invalid Input. Select a number between 1 and 9.')
     end
+
+    it 'compares the selection with a negative number' do
+      validation = Validation.new
+      expect(p(validation.next_turn(-2, 'x'))).to eql('Invalid Input. Select a number between 1 and 9.')
+    end
   end
 end
 
