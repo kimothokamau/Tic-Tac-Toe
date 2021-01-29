@@ -29,11 +29,6 @@ The winner:
 
 ## Author
 
-👤 **Kimotho Kamau**
-
-- GitHub: [@kimothokamau](https://github.com/kimothokamau/)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kimotho-kamau-6ab307185)
-
 👤 **Tasheka Hamilton**
 
 - GitHub: [@alexisbec](https://github.com/Tasheka/)
@@ -43,6 +38,11 @@ The winner:
 
 - GitHub: [@alexisbec](https://github.com/alexisbec)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/alexis-varela-2584111b7/)
+
+👤 **Kimotho Kamau**
+
+- GitHub: [@kimothokamau](https://github.com/kimothokamau/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kimotho-kamau-6ab307185)
 
 ## 🤝 Contributing
 
