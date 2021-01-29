@@ -29,6 +29,11 @@ The winner:
 
 ## Author
 
+👤 **Kimotho Kamau**
+
+- GitHub: [@kimothokamau](https://github.com/kimothokamau/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kimotho-kamau-6ab307185)
+
 👤 **Tasheka Hamilton**
 
 - GitHub: [@alexisbec](https://github.com/Tasheka/)
