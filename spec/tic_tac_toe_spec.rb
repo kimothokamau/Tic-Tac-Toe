@@ -28,7 +28,7 @@ describe WinCombinations do
                                            'Player X'))).to eql('Congratulations Player X! You are the winner!')
     end
 
-    it 'compares if player y is the winner' do
+    it 'compares if player o is the winner' do
       win_combinations = WinCombinations.new
       expect(p(win_combinations.win_combos([3, 6, 9], [1, 2, 3, 4, 5, 6, 7, 8],
                                            'Player Y'))).to eql('Congratulations Player Y! You are the winner!')
